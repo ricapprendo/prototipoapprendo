@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ApprendoDemo1</string>
+    <string name="app_name">APPrendo</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -13,4 +13,32 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">1570 - MP</string>
     <string name="menu_send">1571 - IDPP</string>
+    <string name="title_activity_dinamica_detail">DinamicaDetailActivity</string>
+    <string name="large_text1">
+        Promover el acercamiento a la corporalidad a través de la integración de la dimensión sexual en los niños y niñas, enmarcado en el desarrollo de su ciclo vital.
+    </string>
+    <string name="large_text2">
+"Este Tipo de juego es a través de representaciones también llamado”juego de roles”, con lo que se intenta ampliar a través de una dramatización el campo de experiencia de los niños, permitiendo la exploración de su comportamiento.\n\n"
+"En esta actividad, se debe:\n\n"
+"Definir la situación de cada personaje\n\n"
+"Los papeles son escogidos de manera voluntaria\n\n"
+"Se da tiempo de 3 o 4 min para familiarizarse con con el personaje y situación\n\n"
+"El alumno Debe provocar reacciones espontáneas y no dirigidas.\n\n"
+"Al finalizar la representación. Se abre un coloquio con los actores y demás alumnos: ¿que han sentido los actores?, ¿que han observado los espectadores?\n\n"
+        "Objetivos:\n\n"
+"Permite observar y analizar una situación de dimensiones humanas in vitro. Permite que los participantes se den cuenta de lo que hacen, de cómo lo hacen, y de las consecuencias de sus comportamientos. Permite probar o experimentar nuevos comportamientos en un clima de riesgo limitado(al no es una situación real en este momento)."
+
+    </string>
+    <string name="title_activity_juego">JuegoActivity</string>
+    <string name="dummy_button">Abandonar actividad</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="objetivos">Objetivos:</string>
+    <string name="dirigidoa">Dirigido a:</string>
+
+    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="seleccionaPerfil">Selecciona tu perfil</string>
+    <string name="okperfil">Listo</string>
+    <string name="recursos">Recursos necesarios:</string>
+    <string name="ejetematico">Eje temático:</string>
 </resources>
