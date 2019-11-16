@@ -14,10 +14,12 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.core.app.NavUtils;
@@ -40,6 +42,14 @@ public class JuegoActivity extends AppCompatActivity {
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
     private WebView mWebview ;
+
+    public ProgressBar loaderPagina;
+
+    public Boolean terminoActividad=false;
+
+    public Boolean aCerrar = false;
+
+    public AlertDialog.Builder popups;
 
 
     /**
@@ -100,6 +110,49 @@ public class JuegoActivity extends AppCompatActivity {
         }
     };
 
+    public AlertDialog.Builder nuevoPopup(){
+        return new AlertDialog.Builder(this);
+    }
+
+    @JavascriptInterface
+    public void onData(String value){
+        if(value.compareTo("true")==0)
+            terminoActividad = true;
+        else
+            terminoActividad = false;
+        if(aCerrar){
+            aCerrar=false;
+            if(terminoActividad){
+                finish();
+            }else{
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Abandonar Actividad")
+                        .setMessage("Seguro que desea abandonar la actividad?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String[] colors = {"Era una prueba", "Ya hice esta actividad","Se terminó el tiempo de actividad", "No me gusta la actividad", "No entendí la actividad"};
+                                AlertDialog.Builder builder = nuevoPopup();
+
+                                builder.setTitle("Elija un motivo:");
+                                builder.setItems(colors, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        finish();
+                                    }
+                                });
+                                builder.show();
+                            }
+
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +170,12 @@ public class JuegoActivity extends AppCompatActivity {
         mWebview  = findViewById(R.id.ventanaJuego);
 
         mWebview.getSettings().setJavaScriptEnabled(true); // enable javascript
+        mWebview.addJavascriptInterface(this,"android");
+
+
+        loaderPagina = (ProgressBar)findViewById(R.id.progressBar2);
+
+        loaderPagina.setVisibility(ProgressBar.VISIBLE);
 
         final Activity activity = this;
 
@@ -132,9 +191,13 @@ public class JuegoActivity extends AppCompatActivity {
                 // Redirect to deprecated method, so you can use it in all SDK versions
                 onReceivedError(view, rerr.getErrorCode(), rerr.getDescription().toString(), req.getUrl().toString());
             }
+
+            public void onPageFinished(WebView view, String url) {
+                    loaderPagina.setVisibility(ProgressBar.INVISIBLE);
+                }
         });
 
-        mWebview .loadUrl(urlJuego);
+        mWebview .loadUrl(urlJuego.concat("?a=1"));
 
         mVisible = true;
         //mControlsView = findViewById(R.id.fullscreen_content_controls);
@@ -228,19 +291,7 @@ public class JuegoActivity extends AppCompatActivity {
     }
 
     public void cerrar(){
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Abandonar Actividad")
-                .setMessage("Seguro que desea abandonar la actividad?")
-                .setPositiveButton("Si", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
+        aCerrar=true;
+        mWebview.loadUrl("javascript:android.onData(finalizoActividad())");
     }
 }

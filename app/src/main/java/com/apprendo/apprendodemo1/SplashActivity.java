@@ -13,6 +13,8 @@ import android.widget.VideoView;
 
 public class SplashActivity extends AppCompatActivity {
 
+    VideoView videoView;
+
     private final int splash_screen_time=3000; //in milliseconds
     Thread splashTread;
     @Override
@@ -20,6 +22,26 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         //getSupportActionBar().hide ();
+
+        videoView = (VideoView)findViewById (R.id.videoView);
+
+        Uri video =Uri.parse("android.resource://" + getPackageName () +"/" + R.raw.video);
+
+        videoView.setVideoURI(video);
+
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
+            @Override
+            public void onCompletion (MediaPlayer mediaPlayer)  {
+                if(isFinishing())
+                    return;
+
+                startActivity(new Intent (SplashActivity.this, MainActivity.class));
+                finish ();
+            }
+
+        });
+
+        videoView.start();
 
         splashTread = new Thread() {
             @Override
@@ -29,6 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                         wait(splash_screen_time);
                     }
                 } catch (InterruptedException e) {
+
                 } finally {
                     Intent i = new Intent(SplashActivity.this,MainActivity.class);
                     startActivity(i);
