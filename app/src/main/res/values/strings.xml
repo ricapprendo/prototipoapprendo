@@ -40,5 +40,6 @@
     <string name="seleccionaPerfil">Selecciona tu perfil</string>
     <string name="okperfil">Listo</string>
     <string name="recursos">Recursos necesarios:</string>
-    <string name="ejetematico">Eje temático:</string>
+    <string name="ejetematico">Ejes temáticos:</string>
+    <string name="participantes">Participantes:</string>
 </resources>

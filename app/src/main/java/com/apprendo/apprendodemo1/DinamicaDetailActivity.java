@@ -1,5 +1,6 @@
 package com.apprendo.apprendodemo1;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class DinamicaDetailActivity extends AppCompatActivity {
@@ -27,14 +31,41 @@ public class DinamicaDetailActivity extends AppCompatActivity {
         txtDescripcion.setText(objDinamica.descripcion);
         TextView txtObjetivos = findViewById(R.id.txtObjetivos);
         txtObjetivos.setText(objDinamica.objetivos);
-        TextView txtDirigidoa = findViewById(R.id.txtDirigidoa);
-        txtDirigidoa.setText(objDinamica.dirigidoa);
-        TextView txtRecursos = findViewById(R.id.txtRecursos);
-        txtRecursos.setText(objDinamica.recursos);
+        LinearLayout listadirigido = findViewById(R.id.listaDirigido);
+        for(int i=0;i<objDinamica.dirigidoa.length;i++) {
+            String strEje = objDinamica.dirigidoa[i];
+            TextView txtEje = new TextView(this,null,0,R.style.pillTag);
+            TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT);
+            params.setMargins(5,5,5,5);
+            txtEje.setLayoutParams(params);
+            txtEje.setText(strEje);
+            listadirigido.addView(txtEje);
+        }
+        LinearLayout listaejes = findViewById(R.id.listaEjes);
+        for(int i=0;i<objDinamica.ejetematico.length;i++) {
+            String strEje = objDinamica.ejetematico[i];
+            TextView txtEje = new TextView(this,null,0,R.style.pillTag);
+            TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT);
+            params.setMargins(5,5,5,5);
+            txtEje.setLayoutParams(params);
+            txtEje.setText(strEje);
+            listaejes.addView(txtEje);
+        }
+        //txtDirigidoa.setText();
+        LinearLayout listaRecursos = findViewById(R.id.listaRecursos);
+        for(int i=0;i<objDinamica.recursos.length;i++) {
+            String strEje = objDinamica.recursos[i];
+            TextView txtEje = new TextView(this,null,0,R.style.pillTag);
+            TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.MATCH_PARENT);
+            params.setMargins(5,5,5,5);
+            txtEje.setLayoutParams(params);
+            txtEje.setText(strEje);
+            listaRecursos.addView(txtEje);
+        }
         TextView txtTiempo = findViewById(R.id.txtTiempo);
         txtTiempo.setText(objDinamica.tiempo);
-        TextView txtEje = findViewById(R.id.txtEje);
-        txtEje.setText(objDinamica.ejetematico);
+        /*TextView txtEje = findViewById(R.id.txtEje);
+        txtEje.setText(objDinamica.ejetematico);*/
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

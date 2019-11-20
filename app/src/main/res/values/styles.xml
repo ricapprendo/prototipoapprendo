@@ -29,4 +29,12 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+
+    <style name="pillTag">
+        <item name="android:background">@drawable/borderpill</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
 </resources>

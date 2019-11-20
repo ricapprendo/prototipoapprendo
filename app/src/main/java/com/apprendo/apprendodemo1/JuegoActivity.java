@@ -46,10 +46,11 @@ public class JuegoActivity extends AppCompatActivity {
     public ProgressBar loaderPagina;
 
     public Boolean terminoActividad=false;
-
     public Boolean aCerrar = false;
 
     public AlertDialog.Builder popups;
+
+    public int numRespuestasJS=0;
 
 
     /**
@@ -116,13 +117,18 @@ public class JuegoActivity extends AppCompatActivity {
 
     @JavascriptInterface
     public void onData(String value){
-        if(value.compareTo("true")==0)
-            terminoActividad = true;
-        else
-            terminoActividad = false;
-        if(aCerrar){
+        numRespuestasJS++;
+        System.out.println("ejecuto una vez onData");
+        System.out.println(value);
+        System.out.println("+++");
+        if(aCerrar && (numRespuestasJS<=1)){
+            if(value.compareTo("true")==0)
+                terminoActividad = true;
+            else
+                terminoActividad = false;
             aCerrar=false;
             if(terminoActividad){
+                numRespuestasJS=0;
                 finish();
             }else{
                 new AlertDialog.Builder(this)
@@ -147,7 +153,13 @@ public class JuegoActivity extends AppCompatActivity {
                             }
 
                         })
-                        .setNegativeButton("No", null)
+                        .setNegativeButton("No",new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                numRespuestasJS=0;
+                            }
+                        })
                         .show();
             }
         }
@@ -197,7 +209,7 @@ public class JuegoActivity extends AppCompatActivity {
                 }
         });
 
-        mWebview .loadUrl(urlJuego.concat("?a=1"));
+        mWebview .loadUrl(urlJuego.concat("?a="+String.valueOf(Math.ceil(Math.random()*100))));
 
         mVisible = true;
         //mControlsView = findViewById(R.id.fullscreen_content_controls);

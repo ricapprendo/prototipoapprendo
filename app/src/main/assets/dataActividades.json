@@ -5,28 +5,28 @@
       "titulo": "Asi soy yo",
       "descripcion": "Promover el acercamiento a la corporalidad a través de la integración de la dimensión sexual en los niños y niñas, enmarcado en el desarrollo de su ciclo vital.",
       "objetivos": "",
-      "dirigidoa": "Primaria mayor",
-      "recursos": "Hojas de papel\nCrayones\n",
+      "dirigidoa": ["Primaria mayor"],
+      "recursos": ["Hojas de papel","Crayones"],
       "tiempo": "0 mins",
-      "ejetematico": "Educación sexual infantil"
+      "ejetematico": ["Educación sexual infantil"]
     },
     {
       "titulo": "Final feliz",
       "descripcion": "Este Tipo de juego es a través de representaciones también llamado”juego de roles”, con lo que se intenta ampliar a través de una dramatización el campo de experiencia de los niños, permitiendo la exploración de su comportamiento.",
       "objetivos": "\n En esta actividad, se debe:\n Definir la situación de cada personaje\n Los papeles son escogidos de manera voluntaria\n Se da tiempo de 3 o 4 min para familiarizarse con con el personaje y situación\n El alumno Debe provocar reacciones espontáneas y no dirigidas.\n Al finalizar la representación. Se abre un coloquio con los actores y demás alumnos: ¿que han sentido los actores?, ¿que han observado los espectadores?\n",
-      "dirigidoa": "Primaria menor \nPrimaria mayor",
-      "recursos": "Teléfono celular con aplicación apprendo\nHojas de papel bohn\nlapices\n",
+      "dirigidoa": ["Primaria menor","Primaria mayor"],
+      "recursos": ["Teléfono celular con aplicación apprendo","Hojas de papel bohn","lapices"],
       "tiempo": "0 mins",
-      "ejetematico": "Abuso sexual infantil"
+      "ejetematico": ["Abuso sexual infantil"]
     },
     {
       "titulo": "Quitando las etiquetas",
       "descripcion": "",
       "objetivos": "Identificar mensajes recibidos y emitido respecto al ser varón y mujer desde un enfoque de género y  generaciones.\nAnalizar su impacto en el desarrollo y la vida cotidiana de las personas.\n",
-      "dirigidoa": "Primaria mayor\nBásico",
-      "recursos": "Post-it",
+      "dirigidoa": ["Primaria mayor","Básico"],
+      "recursos": ["Post-it"],
       "tiempo":"0 mins",
-      "ejetematico": "Educación sexual infantil"
+      "ejetematico": ["Educación sexual infantil"]
     }
   ]
 }
